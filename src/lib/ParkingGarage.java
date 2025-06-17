@@ -16,8 +16,8 @@ public class ParkingGarage {
             if (parkingFloor.parkVehicle(vehicle)) {
                 return true;
             }
-            return false;
         }
+        return false;
     }
 
     public boolean removeVehicle(Vehicle vehicle) {
