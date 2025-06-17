@@ -22,7 +22,7 @@ public class ParkingGarage {
 
     public boolean removeVehicle(Vehicle vehicle) {
         for (ParkingFloor parkingFloor : parkingFloors) {
-            if (parkingFloor.getVehicleSpots(vehicle).length > 0) {
+            if (parkingFloor.getVehicleSpots(vehicle) != null) {
                 parkingFloor.removeVehicle(vehicle);
                 return true;
             }

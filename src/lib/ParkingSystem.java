@@ -27,14 +27,17 @@ public class ParkingSystem {
         if (entryTime == null) {
             return false;
         }
+        boolean wasRemoved = parkingGarage.removeVehicle(driver.getVehicle());
+        if (wasRemoved) {
+            LocalDateTime now = LocalDateTime.now();
+            long totalMinutes = Duration.between(entryTime, now).toMinutes();
 
-        LocalDateTime now = LocalDateTime.now();
-        long totalMinutes = Duration.between(entryTime, now).toMinutes();
+            long billedHours = (totalMinutes + 59) / 60;
+            driver.charge(billedHours * hourlyRate);
 
-        long billedHours = (totalMinutes + 59) / 60;
-        driver.charge(billedHours * hourlyRate);
-
-        timeParked.remove(driver.getId());
-        return parkingGarage.removeVehicle(driver.getVehicle());
+            timeParked.remove(driver.getId());
+            return true;
+        }
+        return false;
     }
 }
