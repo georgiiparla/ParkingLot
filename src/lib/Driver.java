@@ -2,10 +2,10 @@ package lib;
 
 public class Driver {
     private int id;
-    private String vehicle;
+    private Vehicle vehicle;
     private double paymentDue;
 
-    public Driver(int id, String vehicle) {
+    public Driver(int id, Vehicle vehicle) {
         this.id = id;
         this.vehicle = vehicle;
         this.paymentDue = 0.0;
@@ -15,7 +15,7 @@ public class Driver {
         return id;
     }
 
-    public String getVehicle() {
+    public Vehicle getVehicle() {
         return vehicle;
     }
 
